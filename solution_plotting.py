@@ -2,17 +2,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# Create a sample rectangular matrix
-"""
-matrix = np.array([
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [10, 11, 12]
-])
-"""
 
 def plot_3d(matrix):
+    """
+    Plotting the numerical solution in a 3D plot.
+
+    Parameters:
+    matrix (np.array): The array to be plotted in z axis.
+
+    Returns:
+    None
+    
+    Examples:
+    >>> plot_3d(
+      np.array([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [10, 11, 12]
+      ])
+    )
+    """
 
     # Create the x and y coordinates
     x = np.arange(matrix.shape[1])
