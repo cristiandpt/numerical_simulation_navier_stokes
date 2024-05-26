@@ -1,19 +1,14 @@
 from solution_plotting import plot_3d
 from bezier_aproximation import bezier_curve
 import numpy as np
+from initial_aproximation_generation import generate_initial_matrix_with_bezier_curve
 
 def main():
 
     # Create a sample rectangular matrix
+    bezier_aproximation = generate_initial_matrix_with_bezier_curve()
+    plot_3d(bezier_aproximation)
 
-    matrix = np.array([
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-        [10, 11, 12]
-    ])
-
-    plot_3d(matrix)
     # Print the results
     print("Hola desde el main")
 
