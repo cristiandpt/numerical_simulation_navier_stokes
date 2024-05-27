@@ -30,6 +30,7 @@ def gradient_descent_system(funcs, jacobian, x0, learning_rate=0.01, tolerance=1
         x = x - learning_rate * gradient
         
         # Check for convergence
+
         if np.linalg.norm(gradient) < tolerance:
             print(f"Converged in {iteration} iterations")
             break

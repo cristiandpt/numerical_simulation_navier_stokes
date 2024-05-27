@@ -5,15 +5,21 @@ def navier_stokes_residuals(U, V, P, nu, dx, dy, dt, rho):
     
     
     RU = np.zeros_like(U)
-    RV = np.zeros_like(V)
+    
     RP = np.zeros_like(P)
   
     f = navier_stokes_discretized() ## The discretized function that models the 2D Navier-Stokes system.
     
     nx, ny = U.shape
+    RV = V = np.ones((ny, ny))
+
     for i in range(1, nx-1):
         for j in range(1, ny-1):
-            RU[i, j] = U[i, j] - f(U, V, i, j)
+            result = f(U, V, i, j)
+            #print("El current function evaluation: ", result)
+            #print("El current U value[i, j]",  U[i, j])
+            RU[i, j] = U[i, j] - result
+            print("El current RU[i,j]= ",  RU[i, j])
             # Similarly define RV[i, j] and RP[i, j]
             # For simplicity, we'll leave RV and RP as zero here
     

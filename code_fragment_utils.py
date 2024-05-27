@@ -9,3 +9,9 @@
     plt.legend()
     plt.grid(True)
     plt.show()
+
+    state = np.concatenate([U.flatten(), V.flatten(), P.flatten()])
+
+    # Calculate Jacobian
+    jacobian_func = jacobian(combined_residuals)
+    J = jacobian_func(state, nu, dx, dy, dt, rho)

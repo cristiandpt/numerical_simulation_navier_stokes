@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from initial_aproximation_generation import generate_initial_matrix_with_bezier_curve
 from navier_stokes_residuals import navier_stokes_residuals
 from generate_initial_matrix import generate_initial_matrix_with_bezier
+from newton_approximation import newton_raphson
 
 def main():
 
@@ -25,14 +26,7 @@ def main():
     print("Residuals for V:", RV)
     print("Residuals for P:", RP)
 
-    plt.plot(RV[:, 0], label='U_initial')
-    plt.plot(RU[:, 0], label='V_initial')
-    plt.xlabel('Index')
-    plt.ylabel('Value')
-    plt.title('Initial Approximation with Bezier Curve')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    U, V, P = newton_raphson(U_init, V_init, P_init, nu, dx, dy, dt, rho)
 
 # This block ensures that main() is called only when the script is executed directly
 if __name__ == "__main__":
