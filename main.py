@@ -20,8 +20,19 @@ def main():
 
     print("U_init: ", U_init)
 
-    # Print the results
-    print("Hola desde el main")
+    RU, RV, RP = navier_stokes_residuals(U_init, V_init, P_init, nu, dx, dy, dt, rho)
+    print("Residuals for U:", RU)
+    print("Residuals for V:", RV)
+    print("Residuals for P:", RP)
+
+    plt.plot(RV[:, 0], label='U_initial')
+    plt.plot(RU[:, 0], label='V_initial')
+    plt.xlabel('Index')
+    plt.ylabel('Value')
+    plt.title('Initial Approximation with Bezier Curve')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
 # This block ensures that main() is called only when the script is executed directly
 if __name__ == "__main__":
