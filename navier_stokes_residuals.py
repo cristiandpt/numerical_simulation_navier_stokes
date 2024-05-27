@@ -19,7 +19,7 @@ def navier_stokes_residuals(U, V, P, nu, dx, dy, dt, rho):
             #print("El current function evaluation: ", result)
             #print("El current U value[i, j]",  U[i, j])
             RU[i, j] = U[i, j] - result
-            print("El current RU[i,j]= ",  RU[i, j])
+            print("El current RU[%s,%s]= %s" % (i, j, RU[i, j]))
             # Similarly define RV[i, j] and RP[i, j]
             # For simplicity, we'll leave RV and RP as zero here
     

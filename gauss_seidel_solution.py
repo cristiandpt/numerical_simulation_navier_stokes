@@ -1,6 +1,6 @@
 import numpy as np
 
-def gauss_seidel(A, b, x0=None, tol=1e-10, max_iterations=1000):
+def gauss_seidel(A, b, x0=None, tol=1e-10, max_iterations=10):
 
     n = len(b)
     if x0 is None:

@@ -3,7 +3,6 @@ from bezier_aproximation import bezier_curve
 import numpy as np
 import matplotlib.pyplot as plt
 from initial_aproximation_generation import generate_initial_matrix_with_bezier_curve
-from navier_stokes_residuals import navier_stokes_residuals
 from generate_initial_matrix import generate_initial_matrix_with_bezier
 from newton_approximation import newton_raphson
 
@@ -20,11 +19,6 @@ def main():
     U_init, V_init, P_init = generate_initial_matrix_with_bezier(nx, ny, p)
 
     print("U_init: ", U_init)
-
-    RU, RV, RP = navier_stokes_residuals(U_init, V_init, P_init, nu, dx, dy, dt, rho)
-    print("Residuals for U:", RU)
-    print("Residuals for V:", RV)
-    print("Residuals for P:", RP)
 
     U, V, P = newton_raphson(U_init, V_init, P_init, nu, dx, dy, dt, rho)
 

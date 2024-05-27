@@ -6,7 +6,7 @@ def compute_jacobian(U, V, P, nu, dx, dy, dt, rho, epsilon=1e-8):
     nU = U.size
     nV = V.size
     nP = P.size
-    n = nU + nV + nP
+    n = nU #+ nV + nP
     
     J = np.zeros((n, n))
     
@@ -33,9 +33,9 @@ def compute_jacobian(U, V, P, nu, dx, dy, dt, rho, epsilon=1e-8):
         V_pert = V_pert.reshape(V.shape)
         P_pert = P_pert.reshape(P.shape)
         
-        RU_pert, RV_pert, RP_pert = navier_stokes_residuals(U_pert, V_pert, P_pert, nu, dx, dy, dt, rho)
-        R_pert = np.concatenate([RU_pert.flatten(), RV_pert.flatten(), RP_pert.flatten()])
+        #RU_pert, RV_pert, RP_pert = navier_stokes_residuals(U_pert, V_pert, P_pert, nu, dx, dy, dt, rho)
+        #R_pert = np.concatenate([RU_pert.flatten(), RV_pert.flatten(), RP_pert.flatten()])
         
-        J[:, i] = (R_pert - R) / epsilon
+        #J[:, i] = (R_pert - R) / epsilon
     
     return J
