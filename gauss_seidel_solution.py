@@ -12,6 +12,9 @@ def gauss_seidel(A, b, x0=None, tol=1e-10, max_iterations=10):
         x_old = x.copy()
         
         for i in range(n):
+            if A[i, i] == 0:
+                raise ValueError(f"Zero diagonal element detected at index {i}, matrix is singular or ill-conditioned.")
+            
             sigma = np.dot(A[i, :i], x[:i]) + np.dot(A[i, i+1:], x_old[i+1:])
             x[i] = (b[i] - sigma) / A[i, i]
         

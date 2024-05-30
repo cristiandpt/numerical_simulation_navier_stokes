@@ -12,6 +12,5 @@ def bezier_curve(n, p):
     tuple: Arrays representing the x and y coordinates of the curve.
     """
     t = np.linspace(0, 1, n)
-    x = t
     y = (1 - t)**3 * 1.0 + 3 * (1 - t)**2 * t * p + 3 * (1 - t) * t**2 * (1 - p) + t**3 * 0.0
-    return x, y
+    return y
