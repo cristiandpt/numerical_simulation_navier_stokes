@@ -15,7 +15,7 @@ def generate_initial_matrix_with_bezier_curve():
     Generate the initial matrix and plot a heatmap using a Bezier curve.
     """
     p = 0.5
-    x, y = bezier_curve(50, p)
+    y = bezier_curve(50, p)
 
     # Create a 50x5 empty matrix
     matrix = np.empty((5, 50))

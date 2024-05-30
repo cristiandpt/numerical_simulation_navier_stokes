@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from initial_aproximation_generation import generate_initial_matrix_with_bezier_curve
 from generate_initial_matrix import generate_initial_matrix_with_bezier
 from newton_approximation import newton_raphson
+from apply_boundaries_conditions import apply_boundary_conditions
+from interpolations import interpolar_splines_bicubicos, interpolar_bilineal, interpolar_spline_orden_superior
 
 def main():
 
@@ -18,10 +20,19 @@ def main():
     # Generate initial approximation using Bezier curve
     U_init, V_init = generate_initial_matrix_with_bezier(nx, ny, p)
 
-    #U = newton_raphson(U_init, V_init, nu, dx, dy, dt, rho)
-    num_rows, num_columns = V_init.shape
+    apply_boundary_conditions(U_init) 
+
     print("x: %s  -- y: %s" % (U_init, V_init))
-    print("rowns: %s  -- columns: %s" % (num_rows, num_columns))
+
+    U = newton_raphson(U_init, V_init, nu, dx, dy, dt, rho)
+
+    #Iterpolations for resulting matrix
+    int_U = interpolar_splines_bicubicos(U)
+    #interpolar_bilineal(U)
+    # interpolar_spline_orden_superior(U)"""
+   
+    plot_3d(int_U)
+
 
 # This block ensures that main() is called only when the script is executed directly
 if __name__ == "__main__":
